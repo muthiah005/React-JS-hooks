@@ -21,6 +21,9 @@ code {
   height: 100vh;
   box-sizing: border-box;
 }
+.cart_items{
+  margin-top: 16px;
+}
 .cart_items ul{
   list-style-type: none;
   display:flex;
@@ -28,5 +31,17 @@ code {
   justify-content: space-between;
 }
 .cart_items ul li{
-  flex:2
+  /* flex:2 */
+  flex-basis: auto; /* default value */
+  flex-grow: 1;
+}
+.form_holder{
+  width:40%;
+  margin:auto;
+}
+.form_holder .form-group > .form-control,.btn{
+  border-radius:0;
+}
+.ml7{
+  margin-left: 7px;
 }

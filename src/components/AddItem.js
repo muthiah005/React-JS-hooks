@@ -5,33 +5,51 @@ const AddItem = () => {
     const { addItem } =  useContext(ItemContext);
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
-    const [decription, setDescription] = useState('');
+    const [description, setDescription] = useState('');
+
+    const handleChange = (e) =>{
+        // const names = ['name','price','description']
+        const {name,value} = e.target;
+        console.debug(name,value)
+        if(name === 'name'){
+            setName(value);
+        }else if(name === 'price'){
+            setPrice(value);
+        }else if(name === 'description'){
+            setDescription(value);
+        }
+    }
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
-        addItem(name,price,decription);
+        addItem(name,price,description);
         setName('');
         setPrice('');
         setDescription('');
-        console.debug(name,price,decription)
+        console.debug(name,price,description)
     }
 
     return (
+        <div className="form_holder">
         <form onSubmit= {  handleSubmit }>
             <div className="form-group">
-                <label htmlFor="name">Item name</label>
-                <input type="text" className="form-control" id="name" required  value={name} onChange={(e) => { setName(e.target.value) }} />
+                <label htmlFor="name">Name:</label>
+                <input type="text" className="form-control" id="name" 
+                required name="name"  value={name} onChange={(e) => { handleChange(e) }} />
             </div>
             <div className="form-group">
-                <label htmlFor="price">Item price</label>
-                <input type="text" className="form-control" id="price" required name="item_price" value={price} onChange={(e) => { setPrice(e.target.value) }} />
+                <label htmlFor="price">Price:</label>
+                <input type="text" className="form-control" name="price" 
+                id="price" required  value={price} onChange={(e) => { handleChange(e) }} />
             </div>
             <div className="form-group">
-                <label htmlFor="description">Item Description</label>
-                <input type="text" className="form-control" id="description" required  name="item_decription" value={decription} onChange={(e) => { setDescription(e.target.value) }} />
+                <label htmlFor="description">Description:</label>
+                <input type="text" className="form-control"  name="description"  
+                id="description" required value={description} onChange={(e) => { handleChange(e) }} />
             </div>
             <button type="submit" className="btn btn-primary">Save</button>
         </form>
+        </div>
     )
 }
 

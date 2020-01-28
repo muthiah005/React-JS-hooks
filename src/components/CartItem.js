@@ -4,7 +4,7 @@ import { ItemContext } from '../contexts/ItemContext';
 const CartItem = ({ item }) => {
     const { removeItem } = useContext(ItemContext);
     return (
-        <li  key={item.id}>
+        <li  key={item.id} className="col-6">
             <div className="card"  >
                 <div className="card-body">
                     <h5 className="card-title">{item.name}</h5>
